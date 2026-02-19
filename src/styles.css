@@ -1,0 +1,105 @@
+:root {
+  /* Backgrounds */
+  --bg-main: #f7f5f2;
+  --bg-section: #f1ebe1;
+
+  /* Text colors */
+  --text-dark: #4b3621;
+  --text-accent: #8c7b66;
+}
+
+h2 {
+  font-size: 3rem;
+  font-style: italic;
+  font-weight: 100;
+  letter-spacing: 2px;
+}
+
+body {
+  background-color: var(--bg-main);
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.nav-link {
+  font-family: "Inter", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  text-decoration: none;
+  margin: 0 20px;
+  transition: color 0.3s ease;
+  border: none;
+  background: none;
+}
+
+.nav-link:hover {
+  color: var(--btn-active);
+}
+.hero {
+  background-image: url("./images/herobg.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 60vh;
+  position: relative;
+  width: 100vw;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(75, 54, 33, 0.35);
+}
+.hero-content {
+  width: 100%;
+  position: absolute;
+  color: white;
+  text-align: center;
+}
+.hero-content button {
+  margin-top: 1rem;
+  padding: 12px;
+  border: 1px solid #f7f5f2;
+  border-radius: 5px;
+  width: 140px;
+  font-size: 16px;
+}
+.hero-content button:nth-of-type(1) {
+  color: #ffff;
+  background-color: transparent;
+  margin-right: 1rem;
+}
+.about {
+  width: 75%;
+  display: flex;
+  margin: auto;
+  height: 30vh;
+  padding-top: 3rem;
+  gap: 32px;
+}
+
+.aboutImg {
+  background-image: url(./images/about.webp);
+  background-size: cover;
+  background-position: center;
+  border-radius: 5px;
+  width: 35%;
+}
+.about :nth-of-type(2) {
+  width: 40%;
+  line-height: 50px;
+  color: var(--text-accent);
+  font-size: 22px;
+  font-weight: 500;
+}
+.offering-card i {
+  font-size: 3rem;
+  color: #8b4513; /* Brown color */
+  margin-bottom: 20px;
+}
