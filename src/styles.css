@@ -1,3 +1,7 @@
+/* ======================
+   CSS Variables
+   ====================== */
+
 :root {
   /* Backgrounds */
   --bg-main: #f7f5f2;
@@ -6,29 +10,59 @@
   /* Text colors */
   --text-dark: #4b3621;
   --text-accent: #8c7b66;
+  --text-light: #6b5d52;
+
+  /* Button colors */
+  --btn-light: #ffffff;
+  --btn-hover: rgba(255, 255, 255, 0.1);
+
+  /* Fonts */
+  --font-heading: "Playfair Display", Georgia, serif;
+  --font-body: "Lato", "Inter", sans-serif;
+}
+
+/* ======================
+   Base Styles
+   ====================== */
+
+body {
+  background-color: var(--bg-main);
+  font-family: var(--font-body);
+  color: var(--text-dark);
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: 400;
 }
 
 h2 {
   font-size: 3rem;
   font-style: italic;
-  font-weight: 100;
   letter-spacing: 2px;
 }
 
-body {
-  background-color: var(--bg-main);
-  margin: 0;
-  padding: 0;
+p {
+  line-height: 1.8;
 }
+
+/* ======================
+   Navigation
+   ====================== */
 
 nav {
   display: flex;
-  flex-direction: row;
   justify-content: space-around;
 }
 
 .nav-link {
-  font-family: "Inter", sans-serif;
   font-size: 1.5rem;
   font-weight: 500;
   color: var(--text-dark);
@@ -40,66 +74,368 @@ nav {
 }
 
 .nav-link:hover {
-  color: var(--btn-active);
+  color: var(--text-accent);
 }
+
+/* ======================
+   Hero Section
+   ====================== */
+
 .hero {
   background-image: url("./images/herobg.jpg");
   background-size: cover;
   background-position: center;
+  width: 100vw;
   height: 60vh;
   position: relative;
-  width: 100vw;
 }
+
 .hero::before {
   content: "";
   position: absolute;
   inset: 0;
   background: rgba(75, 54, 33, 0.35);
 }
+
 .hero-content {
-  width: 100%;
   position: absolute;
+  width: 100%;
   color: white;
   text-align: center;
 }
+
+.hero-content h2 {
+  font-size: 4rem;
+  font-weight: 600;
+}
+
 .hero-content button {
   margin-top: 1rem;
   padding: 12px;
-  border: 1px solid #f7f5f2;
-  border-radius: 5px;
   width: 140px;
   font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
-.hero-content button:nth-of-type(1) {
-  color: #ffff;
+
+.hero-content .btn-primary {
   background-color: transparent;
+  color: var(--btn-light);
+  border: 1px solid var(--btn-light);
   margin-right: 1rem;
 }
+
+.hero-content .btn-primary:hover {
+  background-color: var(--btn-hover);
+}
+
+.hero-content .btn-secondary {
+  background-color: var(--btn-light);
+  color: var(--text-dark);
+  border: 1px solid var(--btn-light);
+}
+
+.hero-content .btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* ======================
+   About Section
+   ====================== */
+
 .about {
   width: 75%;
   display: flex;
-  margin: auto;
-  height: 30vh;
-  padding-top: 3rem;
   gap: 32px;
+  margin: auto;
+  padding-top: 3rem;
+  height: 30vh;
 }
 
-.aboutImg {
+.about-img {
   background-image: url(./images/about.webp);
   background-size: cover;
   background-position: center;
   border-radius: 5px;
   width: 35%;
 }
-.about :nth-of-type(2) {
+
+.about-text {
   width: 40%;
-  line-height: 50px;
-  color: var(--text-accent);
   font-size: 22px;
   font-weight: 500;
+  line-height: 50px;
+  color: var(--text-accent);
 }
-.offering-card i {
-  font-size: 3rem;
-  color: #8b4513; /* Brown color */
+
+/* ======================
+   Section Titles (Shared Styles)
+   ====================== */
+
+.offerings-title,
+.visit-us-title {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-style: italic;
+  color: var(--text-dark);
+  margin-bottom: 50px;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+/* Decorative lines before and after titles */
+.offerings-title::before,
+.offerings-title::after,
+.visit-us-title::before,
+.visit-us-title::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 30%;
+  height: 1px;
+  background-color: var(--text-accent);
+}
+
+.offerings-title::before,
+.visit-us-title::before {
+  left: 0;
+}
+
+.offerings-title::after,
+.visit-us-title::after {
+  right: 0;
+}
+
+/* ======================
+   What We Offer Section
+   ====================== */
+
+.offerings {
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.offerings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.offering-card {
+  background-color: var(--bg-section);
+  padding: 40px 30px;
+  border-radius: 12px;
+  text-align: center;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.offering-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.offering-card img {
+  width: 80px;
+  height: 80px;
   margin-bottom: 20px;
+  filter: brightness(0) saturate(100%) invert(25%) sepia(20%) saturate(1000%)
+    hue-rotate(15deg);
+}
+
+.offering-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 15px;
+}
+
+.offering-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-light);
+  margin: 0;
+}
+
+/* ======================
+   Quote Section
+   ====================== */
+
+.quote-section {
+  background-color: var(--bg-section);
+  padding: 60px 20px;
+  margin: 80px 0;
+  text-align: center;
+}
+
+.quote-section blockquote {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 40px;
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--text-dark);
+  position: relative;
+}
+
+.quote-section blockquote::before {
+  content: '"';
+  position: absolute;
+  left: -10px;
+  top: -20px;
+  font-family: Georgia, serif;
+  font-size: 4rem;
+  color: var(--text-accent);
+}
+
+.quote-section blockquote::after {
+  content: '"';
+  position: absolute;
+  right: -10px;
+  bottom: -40px;
+  font-family: Georgia, serif;
+  font-size: 4rem;
+  color: var(--text-accent);
+}
+
+/* ======================
+   Visit Us Section
+   ====================== */
+
+.visit-us {
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.visit-us-title {
+  margin-bottom: 30px;
+}
+
+.visit-us-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-top: 20px;
+}
+
+.visit-card {
+  background-color: transparent;
+  padding: 20px 15px;
+  text-align: center;
+  border-right: 1px solid var(--text-accent);
+}
+
+.visit-card:last-child {
+  border-right: none;
+}
+
+.visit-card img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 15px;
+  filter: brightness(0) saturate(100%) invert(25%) sepia(20%) saturate(1000%)
+    hue-rotate(15deg);
+}
+
+.visit-card i {
+  font-size: 2.5rem;
+  color: var(--text-accent);
+  margin-bottom: 15px;
+  display: block;
+}
+
+.visit-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.visit-card p {
+  font-size: 1rem;
+  color: var(--text-accent);
+  margin: 5px 0 0 0;
+}
+
+/* ======================
+   Responsive Design
+   ====================== */
+
+@media (max-width: 768px) {
+  /* Offerings */
+  .offerings-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .offerings-title {
+    font-size: 2rem;
+  }
+
+  .offerings-title::before,
+  .offerings-title::after {
+    width: 20%;
+  }
+
+  /* Quote */
+  .quote-section blockquote {
+    font-size: 1.4rem;
+    padding: 0 20px;
+  }
+
+  .quote-section blockquote::before,
+  .quote-section blockquote::after {
+    font-size: 3rem;
+  }
+
+  /* About */
+  .about {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .about-img,
+  .about-text {
+    width: 100%;
+  }
+
+  /* Visit Us */
+  .visit-us-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .visit-card:nth-child(2n) {
+    border-right: none;
+  }
+
+  .visit-card:nth-child(odd):not(:last-child) {
+    border-right: 1px solid var(--text-accent);
+  }
+
+  .visit-us-title::before,
+  .visit-us-title::after {
+    width: 20%;
+  }
+}
+
+@media (max-width: 480px) {
+  .visit-us-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .visit-card {
+    border-right: none;
+  }
 }
