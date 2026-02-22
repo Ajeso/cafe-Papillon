@@ -4,11 +4,27 @@ import { renderAbout } from "./pages/about.js";
 import { renderMenu } from "./pages/menu.js";
 
 const container = document.getElementById("content");
-const tabs = document.querySelectorAll("button");
-
+const homeTabs = document.querySelectorAll("button");
 container.innerHTML = renderHome();
 
-tabs.forEach((tab) => {
+function initMenuTabs() {
+  const menuTabs = document.querySelectorAll(".menu-tab");
+  const sections = document.querySelectorAll(".menu-section");
+
+  menuTabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const category = tab.dataset.category;
+
+      menuTabs.forEach((t) => t.classList.remove("active"));
+      sections.forEach((s) => s.classList.remove("active"));
+
+      tab.classList.add("active");
+      document.getElementById(category).classList.add("active");
+    });
+  });
+}
+
+homeTabs.forEach((tab) => {
   tab.addEventListener("click", (e) => {
     const page = e.target.dataset.page;
 
@@ -16,6 +32,7 @@ tabs.forEach((tab) => {
       container.innerHTML = renderHome();
     } else if (page === "menu") {
       container.innerHTML = renderMenu();
+      initMenuTabs();
     } else if (page === "about") {
       container.innerHTML = renderAbout();
     }
