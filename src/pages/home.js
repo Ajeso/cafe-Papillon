@@ -14,8 +14,8 @@ export function renderHome() {
     <div class="hero-content">
       <h2>Café des Livres</h2>
       <p>A quiet corner for coffee, books, and slow moments</p>
-      <button class="btn-primary">View Menu</button>
-      <button class="btn-secondary">Visit Us</button>
+      <button class="btn-primary" data-action="view-menu">View Menu</button>
+      <button class="btn-secondary" data-action="visit-us">Visit Us</button>
     </div>
   </section>
 
@@ -32,19 +32,19 @@ export function renderHome() {
     <h2 class="offerings-title">What We Offer</h2>
     
     <div class="offerings-grid">
-      <div class="offering-card">
+        <div class="offering-card" data-action="menu-tab" data-tab="coffee" style="cursor: pointer;">
         <img src="${coffeeIcon}" alt="Coffee cup icon">
         <h3>Artisan Coffee</h3>
         <p>Carefully brewed comfort in every cup.</p>
       </div>
       
-      <div class="offering-card">
+        <div class="offering-card" data-action="about-page" style="cursor: pointer;">
         <img src="${booksIcon}" alt="Books icon">
         <h3>Reading Corner</h3>
         <p>A peaceful space to read and unwind.</p>
       </div>
       
-      <div class="offering-card">
+        <div class="offering-card" data-action="menu-tab" data-tab="pastries" style="cursor: pointer;">
         <img src="${croissantIcon}" alt="Croissant icon">
         <h3>Fresh Pastries</h3>
         <p>Baked delights to sweeten your day.</p>
@@ -60,7 +60,7 @@ export function renderHome() {
   </section>
 
     <!-- VISIT US SECTION -->
-  <section class="visit-us">
+  <section id="visit-us" class="visit-us">
     <h2 class="visit-us-title">Visit Us</h2>
     
     <div class="visit-us-grid">

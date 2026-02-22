@@ -7,6 +7,31 @@ const container = document.getElementById("content");
 const homeTabs = document.querySelectorAll("button");
 container.innerHTML = renderHome();
 
+function initHomeInteractions() {
+  container.addEventListener("click", (e) => {
+    const button = e.target.closest("[data-action]");
+    if (!button) return;
+    const action = button.dataset.action;
+    const tab = button.dataset.tab;
+
+    if (action === "visit-us") {
+      const visitUsSection = document.getElementById("visit-us-section");
+      if (visitUsSection) {
+        visitUsSection.scrollIntoView({ behavior: "smooth" });
+      }
+    } else if (action === "view-menu") {
+      container.innerHTML = renderMenu();
+      initMenuTabs("coffee");
+    } else if (action === "menu-tab") {
+      container.innerHTML = renderMenu();
+      initMenuTabs(tab);
+    } else if (action === "about-page") {
+      container.innerHTML = renderAbout();
+    }
+  });
+}
+
+initHomeInteractions();
 function initMenuTabs() {
   const menuTabs = document.querySelectorAll(".menu-tab");
   const sections = document.querySelectorAll(".menu-section");
