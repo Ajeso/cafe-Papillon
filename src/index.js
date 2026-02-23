@@ -15,7 +15,7 @@ function initHomeInteractions() {
     const tab = button.dataset.tab;
 
     if (action === "visit-us") {
-      const visitUsSection = document.getElementById("visit-us-section");
+      const visitUsSection = document.getElementById("visit-us");
       if (visitUsSection) {
         visitUsSection.scrollIntoView({ behavior: "smooth" });
       }
